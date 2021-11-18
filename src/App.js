@@ -9,8 +9,10 @@ function App() {
         <Weather />
       </header>
       <footer>
-        Open-source code by Donna Dinh{" "}
-        <img src={logo} className="App-logo" alt="logo" />
+        <a href="https://github.com/sailorbunni/weather-react">
+          Open-source code
+        </a>{" "}
+        by Donna Dinh <img src={logo} className="App-logo" alt="logo" />
       </footer>
     </div>
   );
