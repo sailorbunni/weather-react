@@ -8,6 +8,10 @@ function App() {
       <header className="App-header">
         <Weather />
       </header>
+      <footer>
+        Open-source code by Donna Dinh{" "}
+        <img src={logo} className="App-logo" alt="logo" />
+      </footer>
     </div>
   );
 }
