@@ -1,5 +1,6 @@
 import React from "react";
 import "./Weather.css";
+import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Weather() {
   let weatherData = {
@@ -7,7 +8,6 @@ export default function Weather() {
     temperature: 18,
     date: "Wednesday 15:00",
     description: "Sunny",
-    imgUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
     humidity: 42,
     wind: 6,
   };
@@ -43,17 +43,18 @@ export default function Weather() {
       <div className="row">
         <div className="col-6">
           <div className="clearfix weather-temperature">
-            <img
-              src={weatherData.imgUrl}
+            <ReactAnimatedWeather
+              icon="CLEAR_DAY"
+              color="black"
+              size={55}
+              animate={true}
               alt={weatherData.description}
               className="float-left"
             />
-            <div className="float-left">
-              <strong>{weatherData.temperature}</strong>
-              <span className="units">
-                <a href="/">°C</a> | <a href="/">°F</a>
-              </span>
-            </div>
+            <strong>{weatherData.temperature}</strong>
+            <span className="units">
+              <a href="/">°C</a> | <a href="/">°F</a>
+            </span>
           </div>
         </div>
         <div className="col-6">
@@ -61,6 +62,63 @@ export default function Weather() {
             <li>Humidity: {weatherData.humidity}%</li>
             <li>Wind: {weatherData.wind} km/h</li>
           </ul>
+        </div>
+      </div>
+      <br />
+      <div className="row fiveDay">
+        <div className="col-2 forecast">
+          Thur <br />{" "}
+          <ReactAnimatedWeather
+            icon="CLOUDY"
+            color="black"
+            size={55}
+            animate={true}
+          />
+          13°
+        </div>
+        <div className="col-2 forecast">
+          Fri
+          <br />{" "}
+          <ReactAnimatedWeather
+            icon="WIND"
+            color="black"
+            size={55}
+            animate={true}
+          />
+          14°
+        </div>
+        <div className="col-2 forecast">
+          Sat
+          <br />{" "}
+          <ReactAnimatedWeather
+            icon="RAIN"
+            color="black"
+            size={55}
+            animate={true}
+          />
+          15°
+        </div>
+        <div className="col-2 forecast">
+          Sun
+          <br />{" "}
+          <ReactAnimatedWeather
+            icon="PARTLY_CLOUDY_DAY"
+            color="black"
+            size={55}
+            animate={true}
+          />
+          16°
+        </div>
+        <div className="col-2 forecast">
+          Mon
+          <br />{" "}
+          <ReactAnimatedWeather
+            icon="CLEAR_DAY"
+            color="black"
+            size={55}
+            animate={true}
+          />
+          17°
         </div>
       </div>
     </div>
