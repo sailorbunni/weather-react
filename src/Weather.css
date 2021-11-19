@@ -72,3 +72,6 @@
 .fiveDay {
   left: 20px;
 }
+.Weather .mainTemp {
+  margin: 15px;
+}
