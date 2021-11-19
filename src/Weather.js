@@ -1,8 +1,11 @@
 import React from "react";
+import axois from "axios";
 import "./Weather.css";
 import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Weather() {
+  const apiKey = "516d8557dd651a50157fe1f94e6882a3";
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${weatherData.city}&appid=${apiKey}`;
   let weatherData = {
     city: "Tokyo",
     temperature: 18,
