@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Weather default="New York" />
+        <Weather />
       </header>
       <footer>
         <a href="https://github.com/sailorbunni/weather-react">
