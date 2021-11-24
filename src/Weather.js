@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import ConvertTemp from "./ConvertTemp";
 import "./Weather.css";
 import ReactAnimatedWeather from "react-animated-weather";
 
@@ -64,10 +65,7 @@ export default function Weather() {
         <div className="col-6">
           <div className="clearfix weather-temperature">
             <WeatherIcon code={update.icon} alt={update.description} />
-            <strong className="mainTemp">{Math.round(update.temp)}</strong>
-            <span className="units">
-              <a href="/">°C</a> | <a href="/">°F</a>
-            </span>
+            <ConvertTemp celsius={update.temp} />
           </div>
         </div>
         <div className="col-6">
