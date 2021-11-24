@@ -12,7 +12,9 @@ function App() {
         <a href="https://github.com/sailorbunni/weather-react">
           Open-source code
         </a>{" "}
-        by Donna Dinh <img src={logo} className="App-logo" alt="logo" />
+        by Donna Dinh. Hosted on{" "}
+        <a href="https://wonderful-panini-1db93a.netlify.app/"> Netlify</a>{" "}
+        <img src={logo} className="App-logo" alt="logo" />
       </footer>
     </div>
   );
