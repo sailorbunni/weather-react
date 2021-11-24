@@ -11,12 +11,12 @@ export default function Weather() {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   function updateWeather(response) {
     setUpdate({
+      time: response.data.dt,
       city: response.data.name,
       temp: response.data.main.temp,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      date: new Date(response.data.dt * 1000),
     });
   }
   function handleSubmit(event) {
@@ -53,7 +53,7 @@ export default function Weather() {
         <h1>{update.city}</h1>
         <ul>
           <li>
-            Last updated: <FormattedDate date={update.date} />
+            Last updated: <FormattedDate date={update.time} />
           </li>
           <li>{update.description}</li>
         </ul>
