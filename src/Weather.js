@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
 import "./Weather.css";
 import ReactAnimatedWeather from "react-animated-weather";
 
@@ -17,6 +18,7 @@ export default function Weather() {
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
+      icon: response.data.weather[0].icon,
     });
   }
   function handleSubmit(event) {
@@ -61,14 +63,7 @@ export default function Weather() {
       <div className="row">
         <div className="col-6">
           <div className="clearfix weather-temperature">
-            <ReactAnimatedWeather
-              icon="CLEAR_DAY"
-              color="black"
-              size={55}
-              animate={true}
-              alt={update.description}
-              className="float-left"
-            />
+            <WeatherIcon code={update.icon} alt={update.description} />
             <strong className="mainTemp">{Math.round(update.temp)}</strong>
             <span className="units">
               <a href="/">°C</a> | <a href="/">°F</a>
