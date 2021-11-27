@@ -4,14 +4,57 @@ import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import ConvertTemp from "./ConvertTemp";
 import "./Weather.css";
-import ReactAnimatedWeather from "react-animated-weather";
+import WeatherForecastDay from "./WeatherForecastDay";
 
 export default function Weather() {
   const [city, setCity] = useState();
   const [update, setUpdate] = useState({});
-  const apiKey = "1f8137cf6aeb3d50524cd142a838b3ff";
+  const [apiResponse, setApiResponse] = useState({});
+
+  const apiKey = "84459afcb8fce3b4af9f271f4cb1929c";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  function handleResponse(response) {
+    console.log(response.data.daily);
+    setApiResponse({
+      firstDay: response.data.daily[0].dt,
+      firstMin: response.data.daily[0].temp.min,
+      firstMax: response.data.daily[0].temp.max,
+      firstIcon: response.data.daily[0].weather[0].icon,
+      firstDescription: response.data.daily[0].weather[0].description,
+
+      secondDay: response.data.daily[1].dt,
+      secondMin: response.data.daily[1].temp.min,
+      secondMax: response.data.daily[1].temp.max,
+      secondIcon: response.data.daily[1].weather[0].icon,
+      secondDescription: response.data.daily[1].weather[0].description,
+
+      thirdDay: response.data.daily[2].dt,
+      thirdMin: response.data.daily[2].temp.min,
+      thirdMax: response.data.daily[2].temp.max,
+      thirdIcon: response.data.daily[2].weather[0].icon,
+      thirdDescription: response.data.daily[2].weather[0].description,
+
+      forthDay: response.data.daily[3].dt,
+      forthMin: response.data.daily[3].temp.min,
+      forthMax: response.data.daily[3].temp.max,
+      forthIcon: response.data.daily[3].weather[0].icon,
+      forthDescription: response.data.daily[3].weather[0].description,
+
+      fifthDay: response.data.daily[4].dt,
+      fifthMin: response.data.daily[4].temp.min,
+      fifthMax: response.data.daily[4].temp.max,
+      fifthIcon: response.data.daily[4].weather[0].icon,
+      fifthDescription: response.data.daily[4].weather[0].description,
+    });
+  }
+
   function updateWeather(response) {
+    const lat = response.data.coord.lat;
+    const lon = response.data.coord.lon;
+    let apiCityUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiCityUrl).then(handleResponse);
+
     setUpdate({
       time: response.data.dt,
       city: response.data.name,
@@ -64,7 +107,11 @@ export default function Weather() {
       <div className="row">
         <div className="col-6">
           <div className="clearfix weather-temperature">
-            <WeatherIcon code={update.icon} alt={update.description} />
+            <WeatherIcon
+              code={update.icon}
+              alt={update.description}
+              size="80"
+            />
             <ConvertTemp celsius={update.temp} />
           </div>
         </div>
@@ -78,58 +125,64 @@ export default function Weather() {
       <br />
       <div className="row fiveDay">
         <div className="col-2 forecast">
-          Thur <br />{" "}
-          <ReactAnimatedWeather
-            icon="CLOUDY"
-            color="black"
-            size={55}
-            animate={true}
-          />
-          13°
+          <WeatherForecastDay day={apiResponse.firstDay} />
+          <br />{" "}
+          <WeatherIcon
+            code={apiResponse.firstIcon}
+            alt={apiResponse.firstDescription}
+            size="55"
+          />{" "}
+          <br />
+          {Math.round(apiResponse.firstMin)}° |{" "}
+          {Math.round(apiResponse.firstMax)}°
         </div>
         <div className="col-2 forecast">
-          Fri
+          <WeatherForecastDay day={apiResponse.secondDay} />
           <br />{" "}
-          <ReactAnimatedWeather
-            icon="WIND"
-            color="black"
-            size={55}
-            animate={true}
-          />
-          14°
+          <WeatherIcon
+            code={apiResponse.secondIcon}
+            alt={apiResponse.secondDescription}
+            size="55"
+          />{" "}
+          <br />
+          {Math.round(apiResponse.secondMin)}° |{" "}
+          {Math.round(apiResponse.secondMax)}°
         </div>
         <div className="col-2 forecast">
-          Sat
+          <WeatherForecastDay day={apiResponse.thirdDay} />
           <br />{" "}
-          <ReactAnimatedWeather
-            icon="RAIN"
-            color="black"
-            size={55}
-            animate={true}
-          />
-          15°
+          <WeatherIcon
+            code={apiResponse.thirdIcon}
+            alt={apiResponse.thirdDescription}
+            size="55"
+          />{" "}
+          <br />
+          {Math.round(apiResponse.thirdMin)}° |{" "}
+          {Math.round(apiResponse.thirdMax)}°
         </div>
         <div className="col-2 forecast">
-          Sun
+          <WeatherForecastDay day={apiResponse.forthDay} />
           <br />{" "}
-          <ReactAnimatedWeather
-            icon="PARTLY_CLOUDY_DAY"
-            color="black"
-            size={55}
-            animate={true}
-          />
-          16°
+          <WeatherIcon
+            code={apiResponse.forthIcon}
+            alt={apiResponse.forthDescription}
+            size="55"
+          />{" "}
+          <br />
+          {Math.round(apiResponse.forthMin)}° |{" "}
+          {Math.round(apiResponse.forthMax)}°
         </div>
         <div className="col-2 forecast">
-          Mon
+          <WeatherForecastDay day={apiResponse.fifthDay} />
           <br />{" "}
-          <ReactAnimatedWeather
-            icon="CLEAR_DAY"
-            color="black"
-            size={55}
-            animate={true}
-          />
-          17°
+          <WeatherIcon
+            code={apiResponse.fifthIcon}
+            alt={apiResponse.fifthDescription}
+            size="55"
+          />{" "}
+          <br />
+          {Math.round(apiResponse.fifthMin)}° |{" "}
+          {Math.round(apiResponse.fifthMax)}°
         </div>
       </div>
     </div>
