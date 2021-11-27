@@ -1,7 +1,16 @@
+:root {
+  --primary-color: #e7eaf6;
+  --secondary-color: #a2a8d3;
+  --third-color: #38598b;
+  --forth-color: #113f67;
+}
 .Weather {
   padding: 20px;
-  border: 1px solid #dadde1;
+  border: 1px solid var(--third-color);
   border-radius: 5px;
+  background-color: var(--secondary-color);
+  font-family: "Poiret One", cursive;
+  font-weight: 900;
 }
 
 .Weather .overview {
@@ -15,7 +24,7 @@
 }
 
 .Weather .weather-temperature strong {
-  color: rgb(33, 33, 33);
+  color: var(--primary-color);
   font-size: 64px;
   line-height: 1;
   font-weight: 400;
@@ -28,7 +37,7 @@
 }
 
 .Weather .weather-temperature .active {
-  color: rgb(33, 33, 33);
+  color: var(--third-color);
   cursor: default;
 }
 
@@ -41,7 +50,7 @@
 }
 
 .Weather .weather-forecast h3 {
-  color: rgb(186, 186, 186);
+  color: var(--third-color);
   font-size: 14px;
   font-weight: 400;
   text-align: center;
@@ -59,7 +68,7 @@
 
 .Weather .weather-forecast-temperature {
   text-align: center;
-  color: rgb(135, 135, 135);
+  color: var(--third-color);
   font-size: 13px;
   font-weight: 400;
   height: auto;
@@ -74,4 +83,10 @@
 }
 .Weather .mainTemp {
   margin: 15px;
+}
+.Weather .overview .time {
+  font-size: 14px;
+}
+.Weather .fiveDay {
+  color: var(--forth-color);
 }

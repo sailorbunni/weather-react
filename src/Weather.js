@@ -15,7 +15,6 @@ export default function Weather() {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   function handleResponse(response) {
-    console.log(response.data.daily);
     setApiResponse({
       firstDay: response.data.daily[0].dt,
       firstMin: response.data.daily[0].temp.min,
@@ -90,15 +89,15 @@ export default function Weather() {
             <input
               type="submit"
               value="Search"
-              className="btn btn-primary w-100"
+              className="btn btn-light w-100"
             />
           </div>
         </div>
       </form>
       <div className="overview">
-        <h1>{update.city}</h1>
+        <h1 className="city">{update.city}</h1>
         <ul>
-          <li>
+          <li className="time">
             Last updated: <FormattedDate date={update.time} />
           </li>
           <li>{update.description}</li>
