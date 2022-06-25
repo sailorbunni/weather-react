@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #e7eaf6;
+  --secondary-color: #a2a8d3;
+  --third-color: #38598b;
+  --forth-color: #113f67;
+}
 .App-logo {
   height: 5vmin;
   pointer-events: none;
