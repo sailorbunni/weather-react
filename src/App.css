@@ -12,6 +12,12 @@
 .App {
   max-width: 600px;
   margin: 30px auto;
+  padding: 20px;
+  border: 1px solid var(--third-color);
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  font-family: "Poiret One", cursive;
+  font-weight: 900;
 }
 
 body {
